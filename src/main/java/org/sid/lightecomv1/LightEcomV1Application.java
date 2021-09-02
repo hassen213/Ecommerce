@@ -26,9 +26,9 @@ public class LightEcomV1Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        categoryRepository.save(new Category(null,"Computers",null,null));
-        categoryRepository.save(new Category(null,"Printers",null,null));
-        categoryRepository.save(new Category(null,"Smart Phone",null,null));
+        categoryRepository.save(new Category(null,"Computers",null,null,null));
+        categoryRepository.save(new Category(null,"Printers",null,null,null));
+        categoryRepository.save(new Category(null,"Smart Phone",null,null,null));
 
         Random rnd=new Random();
         categoryRepository.findAll().forEach(c->{
@@ -40,6 +40,7 @@ public class LightEcomV1Application implements CommandLineRunner {
                 p.setPromotion(rnd.nextBoolean());
                 p.setSelected(rnd.nextBoolean());
                 p.setCategory(c);
+                p.setPhotoName("unknown.png");
                 productRepository.save(p);
             }
         });
